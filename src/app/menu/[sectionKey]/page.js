@@ -163,13 +163,14 @@ const Menu = () => {
                                                             {language === 'mr' ? (item.price_mr || "") : (item.price_en || "")}
                                                         </Typography>
 
-                                                        <IconButton onClick={() => toggleFavorite(item)}>
-                                                            {isFavorite(item.itemId) ? (
+                                                        <IconButton onClick={() => toggleFavorite({ ...item, uniqueId: `${section.sectionKey}-${item.itemId}` })}>
+                                                            {isFavorite(`${section.sectionKey}-${item.itemId}`) ? (
                                                                 <FavoriteIcon color="error" />
                                                             ) : (
                                                                 <FavoriteBorderIcon />
                                                             )}
                                                         </IconButton>
+
 
 
                                                     </Box>

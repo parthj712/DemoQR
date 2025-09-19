@@ -78,17 +78,30 @@ export function FavoritesProvider({ children }) {
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }, [favorites]);
 
+    // const toggleFavorite = (dish) => {
+    //     setFavorites((prev) => {
+    //         const exists = prev.find((item) => item.itemId === dish.itemId); // ✅ use itemId
+    //         if (exists) {
+    //             return prev.filter((item) => item.itemId !== dish.itemId);
+    //         }
+    //         return [...prev, dish];
+    //     });
+    // };
+
+    // const isFavorite = (itemId) => favorites.some((item) => item.itemId === itemId); // ✅ use itemId
+
     const toggleFavorite = (dish) => {
         setFavorites((prev) => {
-            const exists = prev.find((item) => item.itemId === dish.itemId); // ✅ use itemId
+            const exists = prev.find((item) => item.uniqueId === dish.uniqueId);
             if (exists) {
-                return prev.filter((item) => item.itemId !== dish.itemId);
+                return prev.filter((item) => item.uniqueId !== dish.uniqueId);
             }
             return [...prev, dish];
         });
     };
 
-    const isFavorite = (itemId) => favorites.some((item) => item.itemId === itemId); // ✅ use itemId
+    const isFavorite = (uniqueId) => favorites.some((item) => item.uniqueId === uniqueId);
+
 
     return (
         <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
