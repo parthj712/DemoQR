@@ -35,7 +35,7 @@ const DishLike = () => {
                 </Typography>
 
                 {favorites.map((item) => (
-                    <Card key={item.itemId} sx={{ mb: 2, borderRadius: 2 }}>
+                    <Card key={item.uniqueId} sx={{ mb: 2, borderRadius: 2 }}>
                         <CardContent
                             sx={{
                                 display: "flex",
@@ -46,7 +46,7 @@ const DishLike = () => {
                             <Typography>{item.title_en}</Typography>
 
                             <IconButton onClick={() => toggleFavorite(item)}>
-                                {isFavorite(item.itemId) ? (
+                                {isFavorite(item.uniqueId) ? (
                                     <FavoriteIcon color="error" />
                                 ) : (
                                     <FavoriteBorderIcon />
@@ -55,6 +55,7 @@ const DishLike = () => {
                         </CardContent>
                     </Card>
                 ))}
+
             </Box>
         </>
     )
