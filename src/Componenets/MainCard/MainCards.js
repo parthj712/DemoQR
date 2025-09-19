@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 import AnimatedCard from '../AnimatedCard/AnimatedCard'
 import CommonCard from '../CommonCard/CommonCard'
 import data from "../Constant/AllConstant"
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const MainCards = () => {
 
     const [sections, setSections] = useState([]);
+
+    const router = useRouter();
 
     //highight section
     const searchParams = useSearchParams();
@@ -42,6 +44,11 @@ const MainCards = () => {
             }
         }
     }, [highlightSection]);
+
+
+    const handleCardClick = (sectionKey) => {
+        router.push(`/menu/${sectionKey}`);
+    };
 
     return (
         <div>
