@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 const ImageWithFallback = ({ src, alt, ...props }) => {
 
-    const [imgSrc, setImgSrc] = useState("/Fallback.png"); // start with fallback
+    const [imgSrc, setImgSrc] = useState("/demo.jpeg"); // start with fallback
     const { language } = useLanguage();
 
     const theme = useTheme();
