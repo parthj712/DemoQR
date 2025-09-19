@@ -8,6 +8,8 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import DescriptionIcon from '@mui/icons-material/Description';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { keyframes } from '@emotion/react';
@@ -16,6 +18,7 @@ const navItems = [
     { label: 'Home', value: '/menu', filledIcon: <HomeIcon />, outlinedIcon: <HomeOutlinedIcon /> },
     { label: 'Search', value: '/search', filledIcon: <SearchIcon />, outlinedIcon: <SearchOutlinedIcon /> },
     { label: 'Form', value: '/form', filledIcon: <DescriptionIcon />, outlinedIcon: <DescriptionOutlinedIcon /> },
+    { label: 'Likes', value: '/like', filledIcon: <FavoriteIcon />, outlinedIcon: <FavoriteBorderIcon /> },
 ];
 
 const BottomNav = () => {

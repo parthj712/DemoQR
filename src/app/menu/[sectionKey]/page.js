@@ -11,7 +11,8 @@ import {
     Stack,
     useTheme,
     useMediaQuery,
-    CircularProgress
+    CircularProgress,
+    IconButton
 } from '@mui/material';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
@@ -22,6 +23,9 @@ import HeadingEMenu from '@/Componenets/HeadingEMemu/HeadingEMenu';
 import DescriptionWithReadMore from '@/Componenets/DescriptionWithReadMore/DescriptionWithReadMore';
 import DiningConstant from '@/Componenets/Constant/AllConstant';
 import VegNonVegToggle from '@/Componenets/VegNonVegToggle/VegNonVegToggle';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useFavorites } from '@/Theme/ThemeContext';
 
 
 const Menu = () => {
@@ -32,6 +36,8 @@ const Menu = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [filterType, setFilterType] = useState("all"); // ✅ filter state
+
+    const { isFavorite, toggleFavorite } = useFavorites();
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -156,6 +162,16 @@ const Menu = () => {
                                                         }}>
                                                             {language === 'mr' ? (item.price_mr || "") : (item.price_en || "")}
                                                         </Typography>
+
+                                                        <IconButton onClick={() => toggleFavorite(item)}>
+                                                            {isFavorite(item.itemId) ? (
+                                                                <FavoriteIcon color="error" />
+                                                            ) : (
+                                                                <FavoriteBorderIcon />
+                                                            )}
+                                                        </IconButton>
+
+
                                                     </Box>
                                                 </CardContent>
                                             </Box>

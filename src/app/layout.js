@@ -5,7 +5,7 @@ import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@/Theme/theme";
 import { LanguageProvider } from "@/Context/LanguageContext";
 import Applayout from "@/Componenets/AppLayout/Applayout";
-import { ThemeContextProvider } from "@/Theme/ThemeContext";
+import { FavoritesProvider, ThemeContextProvider } from "@/Theme/ThemeContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,13 +22,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <ThemeContextProvider>
-          <LanguageProvider>
-            <CssBaseline />
-            <Box>
-              {children}
-            </Box>
-            <Applayout />
-          </LanguageProvider>
+          <FavoritesProvider>
+            <LanguageProvider>
+              <CssBaseline />
+              <Box>
+                {children}
+              </Box>
+              <Applayout />
+            </LanguageProvider>
+          </FavoritesProvider>
         </ThemeContextProvider>
       </body>
     </html>
