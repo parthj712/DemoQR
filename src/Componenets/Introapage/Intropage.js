@@ -30,7 +30,7 @@ const Intropage = () => {
 
     const menuTitle = language === 'mr' ? "मेन्यू कार्ड (eMenu)" : "Menu Card (eMenu)";
 
-
+``
     return (
         <div style={{
             height: '100vh',
