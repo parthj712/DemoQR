@@ -5,6 +5,7 @@ import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@/Theme/theme";
 import { LanguageProvider } from "@/Context/LanguageContext";
 import Applayout from "@/Componenets/AppLayout/Applayout";
+import { ThemeContextProvider } from "@/Theme/ThemeContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,15 +21,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ThemeProvider theme={theme}>
+        <ThemeContextProvider>
           <LanguageProvider>
             <CssBaseline />
-            <Box> {/* 👈 add padding-bottom so content doesn't hide behind BottomNav */}
+            <Box>
               {children}
             </Box>
-            <Applayout/>
+            <Applayout />
           </LanguageProvider>
-        </ThemeProvider>
+        </ThemeContextProvider>
       </body>
     </html>
   );
