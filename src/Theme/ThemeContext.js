@@ -2,6 +2,7 @@
 import { createContext, useContext, useMemo, useState, useEffect } from "react";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
+/* ----------------- THEME CONTEXT ----------------- */
 const ThemeContext = createContext();
 
 export function ThemeContextProvider({ children }) {
@@ -58,4 +59,44 @@ export function ThemeContextProvider({ children }) {
 
 export function useThemeContext() {
     return useContext(ThemeContext);
+}
+
+/* ----------------- FAVORITES CONTEXT ----------------- */
+const FavoritesContext = createContext();
+
+export function FavoritesProvider({ children }) {
+    const [favorites, setFavorites] = useState([]);
+
+    // Load favorites from localStorage on mount
+    useEffect(() => {
+        const stored = localStorage.getItem("favorites");
+        if (stored) setFavorites(JSON.parse(stored));
+    }, []);
+
+    // Save favorites to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }, [favorites]);
+
+    const toggleFavorite = (dish) => {
+        setFavorites((prev) => {
+            const exists = prev.find((item) => item.itemId === dish.itemId); // ✅ use itemId
+            if (exists) {
+                return prev.filter((item) => item.itemId !== dish.itemId);
+            }
+            return [...prev, dish];
+        });
+    };
+
+    const isFavorite = (itemId) => favorites.some((item) => item.itemId === itemId); // ✅ use itemId
+
+    return (
+        <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>
+            {children}
+        </FavoritesContext.Provider>
+    );
+}
+
+export function useFavorites() {
+    return useContext(FavoritesContext);
 }
