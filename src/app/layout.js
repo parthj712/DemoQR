@@ -1,8 +1,9 @@
 
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@/Theme/theme";
+import { LanguageProvider } from "@/Context/LanguageContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,10 +18,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-       <body className={poppins.className}>
+      <body className={poppins.className}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
+          <LanguageProvider>
+            <CssBaseline />
+            <Box> {/* 👈 add padding-bottom so content doesn't hide behind BottomNav */}
+              {children}
+            </Box>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
