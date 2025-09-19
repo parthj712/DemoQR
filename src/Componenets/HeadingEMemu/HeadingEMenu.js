@@ -5,6 +5,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { motion } from "framer-motion";
 import LanguageToggle from '../LanguageToggle/LanguageToggle';
 import { useLanguage } from '@/Context/LanguageContext';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 const HeadingEMenu = () => {
 
@@ -16,6 +17,14 @@ const HeadingEMenu = () => {
     const { language } = useLanguage();
 
     const menuTitle = language === 'mr' ? "मेन्यू कार्ड (eMenu)" : "Menu Card (eMenu)";
+
+
+    // 🎨 Dynamic background based on theme mode
+    const headerBackground =
+        theme.palette.mode === "light"
+            ? "linear-gradient(-45deg, #00A413, #00C853, #00A413)" // Green gradient for light mode
+            : "linear-gradient(-45deg, #1E1E1E, #2C2C2C, #1E1E1E)"; // Subtle dark gradient for dark mode
+
 
     return (
         <div>
@@ -32,7 +41,7 @@ const HeadingEMenu = () => {
                 <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
                     px={4} py={0.8} alignItems={"center"}
                     sx={{
-                        background: "linear-gradient(-45deg, #00A413, #00C853, #00A413)",
+                        background: headerBackground,
                         backgroundSize: "600% 600%",
                         animation: "gradientMove 3s ease infinite",
                         color: "white",
@@ -46,6 +55,7 @@ const HeadingEMenu = () => {
                         {menuTitle}
                     </Typography>
                     {isMobile && <LanguageToggle />}
+                    {isMobile && <ThemeToggle />}
 
 
                 </Box>

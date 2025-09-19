@@ -68,22 +68,7 @@ const HeadingText = () => {
                                 sx={{
                                     position: 'relative',
                                     display: 'inline-block',
-                                    color: 'black',
-                                    WebkitTextFillColor: 'black',
-                                    WebkitTextStroke: '4px transparent',
-                                    background: 'linear-gradient(180deg, #FAF3E0, #FFE766)',
-                                    backgroundSize: '100% 150%',
-                                    backgroundClip: 'text',
-                                    WebkitBackgroundClip: 'text',
-                                    animation: `${textGradientAnimation} 2.5s ease infinite`,
-                                    '@keyframes strokeGradient': {
-                                        '0%': {
-                                            backgroundPosition: '0% center',
-                                        },
-                                        '100%': {
-                                            backgroundPosition: '200% center',
-                                        },
-                                    },
+                                    color: theme.palette.text.primary, // 👈 dynamic text color
                                 }}
                             >
                                 {mainTitle}
@@ -95,7 +80,7 @@ const HeadingText = () => {
                                 sx={{
                                     position: 'relative',
                                     display: 'inline-block',
-                                    color: 'black',
+                                    color: theme.palette.text.primary, // 👈 dynamic text color
                                 }}
                             >
                                 {secTitle}

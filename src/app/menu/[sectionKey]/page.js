@@ -21,6 +21,7 @@ import { useLanguage } from '@/Context/LanguageContext';
 import HeadingEMenu from '@/Componenets/HeadingEMemu/HeadingEMenu';
 import DescriptionWithReadMore from '@/Componenets/DescriptionWithReadMore/DescriptionWithReadMore';
 import DiningConstant from '@/Componenets/Constant/AllConstant';
+import VegNonVegToggle from '@/Componenets/VegNonVegToggle/VegNonVegToggle';
 
 
 const Menu = () => {
@@ -30,6 +31,7 @@ const Menu = () => {
     const [section, setSection] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [filterType, setFilterType] = useState("all"); // ✅ filter state
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -60,6 +62,12 @@ const Menu = () => {
     }
 
 
+    const filteredItems =
+        filterType === "all"
+            ? section.items
+            : section.items.filter((item) => item.type === filterType);
+
+
     return (
         <Box display="flex" flexDirection="column" sx={{ backgroundColor: "#FAF3E0", minHeight: '100vh', overflowY: 'auto' }}>
             <HeadingEMenu />
@@ -86,10 +94,15 @@ const Menu = () => {
                         </Typography>
                     </Box>
 
-                    {section && section.items && section.items.length > 0 && (
+                    {/* ✅ Veg/Non-Veg Toggle */}
+                    <Box px={isMobile ? 4 : 16} mb={3}>
+                        <VegNonVegToggle onChange={setFilterType} />
+                    </Box>
+
+                    {filteredItems.length > 0 && (
                         <Box display="flex" flexDirection="column" gap={4} pb={4} px={isMobile ? 4 : 16}>
                             <Grid container spacing={4}>
-                                {section.items.map(item => (
+                                {filteredItems.map(item => (
                                     <Grid item xs={12} sm={6} md={4} key={item.itemId}>
                                         <Card sx={{ backgroundColor: "transparent", boxShadow: 0 }}>
                                             <Box display="flex" flexDirection={isSmallMobile ? "column" : "row"} gap={isSmallMobile ? 0 : 1.5}>
