@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, Typography, useTheme } from '@mui/material'
 import React from 'react'
 import { useLanguage } from '@/Context/LanguageContext';
 import { useRouter } from 'next/navigation'
@@ -9,14 +9,17 @@ import LanguageToggle from '../LanguageToggle/LanguageToggle';
 const WelcomePage = () => {
 
     const { language } = useLanguage();
+    const theme = useTheme()
     const router = useRouter();
+
+    const isDark = theme.palette.mode === "dark";
 
     const titleTop = language === 'mr' ? "स्वागत आहे, कृपया आमचा मेनू पहा." : "Welcome, Please View Our menu";
 
     return (
         <div style={{
             height: "100vh",
-            backgroundColor: "#FAF3E0",
+            backgroundColor: theme.palette.background.default,
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -32,10 +35,25 @@ const WelcomePage = () => {
                 <Button
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, backgroundColor: "#800080", py: 1.5, borderRadius: 4 }}
-                    onClick={() => router.push("/menu")} // go to app/page.js
+                    onClick={() => router.push("/menu")}
+                    sx={{
+                        mt: 3,
+                        py: 1.5,
+                        borderRadius: 4,
+                        backgroundColor: isDark ? "#4B0082" : "#800080", // purple shades
+                        color: isDark ? "#ececec" : "#fff", // text color
+                        "&:hover": {
+                            backgroundColor: isDark ? "#5A189A" : "#9932CC", // hover effect
+                        },
+                    }}
                 >
-                    <Typography fontSize={"18px"} fontWeight={"bold"}>{language === "mr" ? "मेनू पहा" : "View Menu"}</Typography>
+                    <Typography
+                        fontSize="18px"
+                        fontWeight="bold"
+                        sx={{ color: isDark ? "#ececec" : "#fff" }}
+                    >
+                        {language === "mr" ? "मेनू पहा" : "View Menu"}
+                    </Typography>
                 </Button>
             </Box>
 

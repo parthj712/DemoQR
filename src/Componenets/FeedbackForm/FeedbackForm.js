@@ -10,6 +10,7 @@ import { CircularProgress } from "@mui/material";
 import SubmitButton from "../SubmitButton/SubmitButton";
 import { useLanguage } from "@/Context/LanguageContext";
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
+import HeadingEMenu from "../HeadingEMemu/HeadingEMenu";
 
 
 export default function FeedbackForm() {
@@ -19,6 +20,10 @@ export default function FeedbackForm() {
     const isSmallMobile = useMediaQuery('(min-width:320px) and (max-width:380px)');
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
+    const isDark = theme.palette.mode === "dark";
+
+
+    // #1e1e1e
 
     // inside component
     const [loading, setLoading] = useState(false);
@@ -226,76 +231,21 @@ export default function FeedbackForm() {
             }}
         >
             <Box pb={18} sx={{
-                backgroundColor: "#fef8e3ff",
+                backgroundColor: theme.palette.background.default,
                 height: "100vh", // full screen height
                 overflowY: "auto" // enables scrolling
             }}>
-                <Box
-                    display="flex"
-                    justifyContent="center"
-                    py={2} // optional: margin top & bottom
-                >
-                    <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        <Image
-                            src={demo}
-                            alt="Manas Hotel demo"
-                            width={
-                                language === "mr"
-                                    ? isSmallMobile
-                                        ? 110
-                                        : isMobile
-                                            ? 180
-                                            : 160
-                                    : isSmallMobile
-                                        ? 135
-                                        : isMobile
-                                            ? 140
-                                            : 160
-                            }
-                            height={
-                                language === "mr"
-                                    ? isSmallMobile
-                                        ? 70
-                                        : isMobile
-                                            ? 130
-                                            : 160
-                                    : isSmallMobile
-                                        ? 80
-                                        : isMobile
-                                            ? 140
-                                            : 160
-                            }
-                            priority
-                        />
-                    </motion.div>
+
+
+                <Box py={2}>
+                    <HeadingEMenu />
                 </Box>
 
-                <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
-                    px={4} py={0.8} alignItems={"center"}
-                    sx={{
-                        background: "linear-gradient(-45deg, #00A413, #00C853, #00A413)",
-                        backgroundSize: "600% 600%",
-                        animation: "gradientMove 3s ease infinite",
-                        color: "white",
-                        "@keyframes gradientMove": {
-                            "0%": { backgroundPosition: "0% 50%" },
-                            "50%": { backgroundPosition: "100% 50%" },
-                            "100%": { backgroundPosition: "0% 50%" },
-                        },
-                    }}>
-                    <Typography textAlign={"center"} fontSize={isSmallMobile ? "16px" : "22px"} fontWeight={600} p={0.5} color='white'>
-                        {menuTitle}
-                    </Typography>
-                    {isMobile && <LanguageToggle />}
 
-
-                </Box>
-
-                <Box display={"flex"} flexDirection={"column"} px={3} py={3.5} mt={4} mx={3.5} sx={{ boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', backgroundColor: "white", borderRadius: "28px" }}>
+                <Box display={"flex"} flexDirection={"column"} px={3} py={3.5} mt={4} mx={3.5} sx={{
+                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', backgroundColor:
+                        theme.palette.mode === "dark" ? "#1e1e1e" : "white", borderRadius: "28px"
+                }}>
 
 
                     <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} pb={2}>
@@ -310,12 +260,10 @@ export default function FeedbackForm() {
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
-                        display={"flex"}
-                        flexDirection={"column"}
+                        display="flex"
+                        flexDirection="column"
                         gap={2}
                     >
-
-
                         {/* name */}
                         <TextField
                             variant="standard"
@@ -330,16 +278,18 @@ export default function FeedbackForm() {
                                 sx: {
                                     fontSize: "14px",
                                     fontWeight: 500,
-                                    color: "#4B4B4B",
+                                    color: isDark ? "#ececec" : "#000",
                                     fontFamily: "Poppins, sans-serif",
-                                    "&.Mui-focused": { color: "#6A1B9A" }
-                                }
+                                    "&.Mui-focused": { color: isDark ? "#FFD700" : "#6A1B9A" },
+                                },
                             }}
                             sx={{
-                                "& .MuiInputBase-root": { fontSize: "14px" }
+                                "& .MuiInputBase-root": {
+                                    fontSize: "14px",
+                                    color: isDark ? "#ececec" : "#000",
+                                },
                             }}
                         />
-
 
                         {/* phone */}
                         <TextField
@@ -355,16 +305,18 @@ export default function FeedbackForm() {
                                 sx: {
                                     fontSize: "14px",
                                     fontWeight: 500,
-                                    color: "#4B4B4B",
+                                    color: isDark ? "#ececec" : "#000",
                                     fontFamily: "Poppins, sans-serif",
-                                    "&.Mui-focused": { color: "#6A1B9A" }
-                                }
+                                    "&.Mui-focused": { color: isDark ? "#FFD700" : "#6A1B9A" },
+                                },
                             }}
                             sx={{
-                                "& .MuiInputBase-root": { fontSize: "14px" }
+                                "& .MuiInputBase-root": {
+                                    fontSize: "14px",
+                                    color: isDark ? "#ececec" : "#000",
+                                },
                             }}
                         />
-
 
                         {/* email */}
                         <TextField
@@ -381,18 +333,20 @@ export default function FeedbackForm() {
                                 sx: {
                                     fontSize: "14px",
                                     fontWeight: 500,
-                                    color: "#4B4B4B",
+                                    color: isDark ? "#ececec" : "#000",
                                     fontFamily: "Poppins, sans-serif",
-                                    "&.Mui-focused": { color: "#6A1B9A" }
-                                }
+                                    "&.Mui-focused": { color: isDark ? "#FFD700" : "#6A1B9A" },
+                                },
                             }}
                             sx={{
-                                "& .MuiInputBase-root": { fontSize: "14px" }
+                                "& .MuiInputBase-root": {
+                                    fontSize: "14px",
+                                    color: isDark ? "#ececec" : "#000",
+                                },
                             }}
                         />
 
-
-                        {/* goodbad */}
+                        {/* good/bad feedback */}
                         <TextField
                             variant="standard"
                             error={!!errors.feedback}
@@ -406,70 +360,67 @@ export default function FeedbackForm() {
                                 sx: {
                                     fontSize: "14px",
                                     fontWeight: 500,
-                                    color: "#4B4B4B",
+                                    color: isDark ? "#ececec" : "#000",
                                     fontFamily: "Poppins, sans-serif",
-                                    "&.Mui-focused": { color: "#6A1B9A" }
-                                }
+                                    "&.Mui-focused": { color: isDark ? "#FFD700" : "#6A1B9A" },
+                                },
                             }}
                             sx={{
-                                "& .MuiInputBase-root": { fontSize: "14px" }
+                                "& .MuiInputBase-root": {
+                                    fontSize: "14px",
+                                    color: isDark ? "#ececec" : "#000",
+                                },
                             }}
                         />
 
-
-                        {/* <Box display="flex" flexDirection="column" gap={1}>
-                            <Typography fontWeight={600} fontSize={"14px"}>{formImage}</Typography>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageChange}
-                                style={{ padding: "6px 0" }}
-                            />
-                            {formData.imageUrl && (
-                                <Box mt={1}>
-                                    <img
-                                        src={formData.imageUrl}
-                                        alt="Preview"
-                                        style={{ maxWidth: "100%", maxHeight: "200px", borderRadius: "8px" }}
-                                    />
-                                </Box>
-                            )}
-                        </Box> */}
-
-
-                        <Box display={"flex"} flexDirection={"column"} gap={1}>
-                            <Typography fontWeight={600} fontSize={"15px"}>{formRating}</Typography>
+                        {/* Rating */}
+                        <Box display="flex" flexDirection="column" gap={1}>
+                            <Typography
+                                fontWeight={600}
+                                fontSize="15px"
+                                sx={{ color: isDark ? "#ececec" : "#000" }}
+                            >
+                                {formRating}
+                            </Typography>
                             <Rating
                                 name="rating"
                                 value={formData.rating}
-                                onChange={(_, newValue) => setFormData((prev) => ({ ...prev, rating: newValue }))}
+                                onChange={(_, newValue) =>
+                                    setFormData((prev) => ({ ...prev, rating: newValue }))
+                                }
+                                sx={{
+                                    color: isDark ? "#FFD700" : "#6A1B9A",
+                                }}
                             />
                         </Box>
 
+                        {/* Submit Button */}
                         <SubmitButton loading={loading} label="Submit" />
 
                         {/* Snackbar */}
                         <Snackbar
                             open={snackbar.open}
                             autoHideDuration={4000}
-                            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                            onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                            onClose={() => setSnackbar((prev) => ({ ...prev, open: false }))}
                             sx={{
-                                mb: 10,         // margin above BottomNav
+                                mb: 10,
                                 zIndex: 2000,
-                                borderRadius: 4  // make sure it's above BottomNav
                             }}
                         >
                             <Alert
-                                onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+                                onClose={() => setSnackbar((prev) => ({ ...prev, open: false }))}
                                 severity={snackbar.severity}
                                 variant="filled"
-                                sx={{ width: '100%' }}
+                                sx={{
+                                    width: "100%",
+                                    backgroundColor: isDark ? "#333" : undefined,
+                                    color: isDark ? "#ececec" : undefined,
+                                }}
                             >
                                 {snackbar.message}
                             </Alert>
                         </Snackbar>
-
                     </Box>
                 </Box>
 

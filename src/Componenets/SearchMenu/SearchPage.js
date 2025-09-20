@@ -99,7 +99,9 @@ export default function SearchPage() {
                     height: "100vh", // full screen height
                     overflowY: "auto" // enables scrolling
                 }}>
-                    <HeadingEMenu />
+                    <Box py={2}>
+                        <HeadingEMenu />
+                    </Box>
 
 
 
