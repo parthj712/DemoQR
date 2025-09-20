@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Paper, Box } from '@mui/material';
+import { Paper, Box, useTheme } from '@mui/material';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -24,6 +24,7 @@ const navItems = [
 const BottomNav = () => {
     const router = useRouter();
     const pathname = usePathname();
+    const theme = useTheme();
 
     const smoothGradient = keyframes`
         0% { background-position: 0% 50%; }
@@ -31,6 +32,22 @@ const BottomNav = () => {
         100% { background-position: 0% 50%; }
       `;
 
+    const bottomBorder =
+        theme.palette.mode === "light"
+            ? "white" // Green gradient for light mode
+            : "black"; // Subtle dark gradient for dark mode
+
+    const gradientBackground =
+        theme.palette.mode === "light"
+            ? "linear-gradient(270deg, #FFD54F, #FF8A65, #FFB300)" // warm gradient for light
+            : "#494747"; // subtle dark gradient
+
+    const gradientTextColor =
+        theme.palette.mode === "light"
+            ? 'linear-gradient(270deg, #FFD54F, #FF8A65, #FFB300)' // warm gradient for light
+            : "#ececec"; // subtle dark gradient
+
+    
     return (
         <motion.div
             initial={{ y: 100, opacity: 0 }}   // starts below the screen
@@ -47,12 +64,12 @@ const BottomNav = () => {
                     display: 'flex',
                     justifyContent: 'space-around',
                     padding: '10px 0',
-                    backgroundColor: '#fef8e3ff',
+                    backgroundColor: theme.palette.background.default,
                     borderTopLeftRadius: "2px",
                     borderTopRightRadius: "2px",
                     display: "flex",
                     alignItems: "center",
-                    border: "1px solid white",
+                    borderTop: `1px solid ${bottomBorder}`,
                     py: 1.5,
                     boxShadow:
                         "0px 4px 12px rgba(0,0,0,0.15), 0px -4px 12px rgba(0,0,0,0.1), 4px 0px 12px rgba(0,0,0,0.1), -4px 0px 12px rgba(0,0,0,0.1)",
@@ -100,7 +117,7 @@ const BottomNav = () => {
                                                 width: '50px',
                                                 height: '30px',
                                                 borderRadius: '20px',
-                                                background: 'linear-gradient(270deg, #FFD54F, #FF8A65, #FFB300)',
+                                                background: gradientBackground,
                                                 backgroundSize: '300% 300%',
                                                 animation: `${smoothGradient} 1.5s ease infinite`,
                                                 zIndex: -1,
@@ -121,7 +138,7 @@ const BottomNav = () => {
                                     fontSize: 14,
                                     fontWeight: isActive ? 600 : 500,
                                     ...(isActive && {
-                                        background: 'linear-gradient(270deg, #FFD54F, #FF8A65, #FFB300)',
+                                        background: gradientTextColor,
                                         backgroundSize: '300% 300%',
                                         animation: `${smoothGradient} 3s ease infinite`,
                                         WebkitBackgroundClip: 'text',

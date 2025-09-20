@@ -11,6 +11,7 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import { useLanguage } from "@/Context/LanguageContext";
 import DiningConstant from "../Constant/AllConstant";
+import HeadingEMenu from "../HeadingEMemu/HeadingEMenu";
 
 
 export default function SearchPage() {
@@ -71,6 +72,8 @@ export default function SearchPage() {
         router.push(`/menu?highlight=${sectionKey}`);
     };
 
+    const isDark = theme.palette.mode === "dark";
+
     return (
         <Suspense fallback={<div>Loading menu...</div>}>
             <motion.div
@@ -92,75 +95,13 @@ export default function SearchPage() {
                 }}
             >
                 <Box sx={{
-                    backgroundColor: "#fef8e3ff",
+                    backgroundColor: theme.palette.background.default,
                     height: "100vh", // full screen height
                     overflowY: "auto" // enables scrolling
                 }}>
-                    <Box
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                        py={2} // optional: margin top & bottom
-                    >
-                        <motion.div
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                            <Image
-                                src={demo}
-                                alt="Manas Hotel demo"
-                                width={
-                                    language === "mr"
-                                        ? isSmallMobile
-                                            ? 110
-                                            : isMobile
-                                                ? 160
-                                                : 160
-                                        : isSmallMobile
-                                            ? 135
-                                            : isMobile
-                                                ? 140
-                                                : 160
-                                }
-                                height={
-                                    language === "mr"
-                                        ? isSmallMobile
-                                            ? 60
-                                            : isMobile
-                                                ? 130
-                                                : 160
-                                        : isSmallMobile
-                                            ? 80
-                                            : isMobile
-                                                ? 140
-                                                : 160
-                                }
-                                priority
-                            />
-                        </motion.div>
-                    </Box>
-
-                    <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
-                        px={4} py={0.8} alignItems={"center"}
-                        sx={{
-                            background: "linear-gradient(-45deg, #00A413, #00C853, #00A413)",
-                            backgroundSize: "600% 600%",
-                            animation: "gradientMove 3s ease infinite",
-                            color: "white",
-                            "@keyframes gradientMove": {
-                                "0%": { backgroundPosition: "0% 50%" },
-                                "50%": { backgroundPosition: "100% 50%" },
-                                "100%": { backgroundPosition: "0% 50%" },
-                            },
-                        }}>
-                        <Typography textAlign={"center"} fontSize={isSmallMobile ? "16px" : "22px"} fontWeight={600} p={0.5} color='white'>
-                            {menuTitle}
-                        </Typography>
-                        {isMobile && <LanguageToggle />}
+                    <HeadingEMenu />
 
 
-                    </Box>
 
                     <Box py={2.5} px={2.5}>
                         <Box display={"flex"} flexDirection={"row"} gap={2}>
@@ -170,31 +111,36 @@ export default function SearchPage() {
                             </Box>
                             <TextField
                                 fullWidth
+                                variant="outlined" // use outlined if you want borders
                                 size="small"
                                 label={searchText}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 sx={{
-                                    '& .MuiOutlinedInput-root': {
-                                        borderRadius: '8px', // custom border radius
-                                        backgroundColor: '#fff', // background color
-                                        '& fieldset': {
-                                            borderColor: '#AA2E30', // normal border color
+                                    "& .MuiOutlinedInput-root": {
+                                        borderRadius: "8px",
+                                        backgroundColor: isDark ? "#1e1e1e" : "#fff", // background per mode
+                                        color: isDark ? "#ececec" : "#111", // text color
+                                        "& fieldset": {
+                                            borderColor: isDark ? "#888" : "#AA2E30", // normal border
                                             borderWidth: 1.5,
                                         },
-                                        '&:hover fieldset': {
-                                            borderColor: '#FFB520', // border color on hover
+                                        "&:hover fieldset": {
+                                            borderColor: isDark ? "#FF9800" : "#FFB520", // hover border
                                         },
-                                        '&.Mui-focused fieldset': {
-                                            borderColor: '#FF6B00', // border color on focus
+                                        "&.Mui-focused fieldset": {
+                                            borderColor: isDark ? "#FF5722" : "#FF6B00", // focus border
                                             borderWidth: 2,
                                         },
                                     },
-                                    '& .MuiInputLabel-root': {
-                                        color: '#AA2E30', // label color
-                                        '&.Mui-focused': {
-                                            color: '#FF6B00', // label color when focused
+                                    "& .MuiInputLabel-root": {
+                                        color: isDark ? "#bbb" : "#AA2E30", // label color
+                                        "&.Mui-focused": {
+                                            color: isDark ? "#FF5722" : "#FF6B00", // label when focused
                                         },
+                                    },
+                                    "& .MuiInputBase-input": {
+                                        color: isDark ? "#ececec" : "#111", // input text color
                                     },
                                 }}
                             />

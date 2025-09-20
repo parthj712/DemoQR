@@ -51,7 +51,7 @@ const HeadingEMenu = () => {
                             position: "sticky",
                             top: 0,              // sticks to top
                             zIndex: 1000,        // keeps it above other elements
-                            background: "white", // prevent text overlap when scrolling
+                            background: theme.palette.background.default, // prevent text overlap when scrolling
                         }}
                     >
                         <Typography
@@ -104,7 +104,7 @@ const HeadingEMenu = () => {
                             {menuTitle}
                         </Typography>
                         {isMobile && <LanguageToggle />}
-                        {isMobile && <ThemeToggle />}
+                        
 
 
                     </Box>
