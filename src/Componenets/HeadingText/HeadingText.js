@@ -32,7 +32,7 @@ const HeadingText = () => {
 
     const secTitle = language === 'mr' ? "तुमचा मेनू, सुंदरपणे पुन्हा डिझाइन केलेला." : "Your menu, beautifully reimagined";
 
-    const essentails = language === 'mr' ? "सबमेनू पाहण्यासाठी मेनूवर क्लिक करा" : "Click the Menu to see Submenu"
+
 
     return (
         <div>
@@ -107,50 +107,7 @@ const HeadingText = () => {
                 </motion.div>
 
                 {/* essential */}
-                <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        position: "sticky",
-                        top: 0,              // sticks to top
-                        zIndex: 1000,        // keeps it above other elements
-                        background: "white", // prevent text overlap when scrolling
-                    }}
-                >
-                    <Typography
-                        textAlign="center"
-                        fontSize={isSmallMobile ? "15px" : isMobile ? "18px" : "22px"}
-                        fontWeight={600}
-                        p={0.5}
-                        sx={{
-                            position: "relative",
-                            color: "#AA2E30",
-                            overflow: "hidden",
-                            display: "inline-block",
-                            "&::before": {
-                                content: '""',
-                                position: "absolute",
-                                top: 0,
-                                left: "-75%",
-                                width: "50%",
-                                height: "100%",
-                                background:
-                                    "linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent)",
-                                transform: "skewX(-20deg)",
-                                animation: "shimmer 2s infinite",
-                            },
-                            "@keyframes shimmer": {
-                                "0%": { left: "-75%" },
-                                "100%": { left: "125%" },
-                            },
-                        }}
-                    >
-                        {essentails}
-                    </Typography>
-                </motion.div>
+                
 
             </Box>
         </div>
