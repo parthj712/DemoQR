@@ -19,6 +19,26 @@ import CloseIcon from '@mui/icons-material/Close';
 const DishDetailsDialog = ({ dish, open, onClose }) => {
     if (!dish) return null;
 
+    const handleShare = async () => {
+        const shareUrl = `${window.location.origin}/menu/${dish.itemId}`;
+        const shareText = `Check out this dish: ${dish.title_en} - ${shareUrl}`;
+
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: dish.title_en,
+                    text: shareText,
+                    url: shareUrl,
+                });
+            } catch (err) {
+                console.error("Share cancelled or failed", err);
+            }
+        } else {
+            navigator.clipboard.writeText(shareUrl);
+            alert("Link copied! Share it with your friends 🎉");
+        }
+    };
+
     return (
         <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
             <Box display={"flex"} flexDirection={"row"}>
@@ -27,6 +47,11 @@ const DishDetailsDialog = ({ dish, open, onClose }) => {
                 </DialogTitle>
 
                 <DialogActions>
+                    <Tooltip title="Share this dish">
+                        <IconButton onClick={handleShare} color="primary">
+                            <ShareIcon />
+                        </IconButton>
+                    </Tooltip>
                     <Button onClick={onClose} color="secondary">
                         <CloseIcon />
                     </Button>

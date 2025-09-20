@@ -16,6 +16,9 @@ const Intropage = () => {
     const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
 
+    const isDark = theme.palette.mode === "dark";
+
+
     const textGradientAnimation = keyframes`
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -30,7 +33,7 @@ const Intropage = () => {
 
     const menuTitle = language === 'mr' ? "मेन्यू कार्ड (eMenu)" : "Menu Card (eMenu)";
 
-``
+    ``
     return (
         <div style={{
             height: '100vh',
@@ -38,7 +41,7 @@ const Intropage = () => {
             flexDirection: "column",
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: "#fef8e3ff",
+            backgroundColor: theme.palette.background.default,
         }}>
             <div style={{ position: "absolute", top: "50px", right: "40px" }}>
                 <LanguageToggle />
@@ -49,7 +52,6 @@ const Intropage = () => {
                 flexDirection: "column",
                 justifyContent: 'flex-start',
                 alignItems: 'center',
-                backgroundColor: "#fef8e3ff",
                 paddingTop: 170,
                 gap: 13
             }}>
@@ -60,42 +62,30 @@ const Intropage = () => {
                     height={isSmallMobile ? 160 : 160} // you can adjust
                     priority // loads immediately
                 />
-                <Box display={"flex"} flexDirection={"column"} justifyContent={"center"} alignItems={"center"}>
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    {/* Main Title with Gradient */}
                     <Typography
                         textAlign="center"
                         fontSize={isSmallMobile ? "50px" : "50px"}
                         fontWeight={700}
-                        sx={{
-                            position: 'relative',
-                            display: 'inline-block',
-                            color: 'black',
-                            WebkitTextFillColor: 'black',
-                            WebkitTextStroke: '4px transparent',
-                            background: 'linear-gradient(180deg, #FAF3E0, #FFE766)',
-                            backgroundSize: '100% 150%',
-                            backgroundClip: 'text',
-                            WebkitBackgroundClip: 'text',
-                            animation: `${textGradientAnimation} 2.5s ease infinite`,
-                            '@keyframes strokeGradient': {
-                                '0%': {
-                                    backgroundPosition: '0% center',
-                                },
-                                '100%': {
-                                    backgroundPosition: '200% center',
-                                },
-                            },
-                        }}
                     >
                         {mainTitle}
                     </Typography>
+
+                    {/* Secondary Title */}
                     <Typography
                         textAlign="center"
                         fontSize={isSmallMobile ? "28px" : "24px"}
                         fontWeight={700}
                         sx={{
-                            position: 'relative',
-                            display: 'inline-block',
-                            color: 'black',
+                            position: "relative",
+                            display: "inline-block",
+                            color: isDark ? "#ececec" : "#000", // plain adaptive text
                         }}
                     >
                         {secTitle}

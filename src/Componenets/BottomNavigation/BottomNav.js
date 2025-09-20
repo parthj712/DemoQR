@@ -47,7 +47,7 @@ const BottomNav = () => {
             ? 'linear-gradient(270deg, #FFD54F, #FF8A65, #FFB300)' // warm gradient for light
             : "#ececec"; // subtle dark gradient
 
-    
+
     return (
         <motion.div
             initial={{ y: 100, opacity: 0 }}   // starts below the screen
@@ -92,6 +92,8 @@ const BottomNav = () => {
                                 color: isActive ? 'white' : 'gray',
                                 position: 'relative',
                                 minWidth: 70,
+                                WebkitTapHighlightColor: 'transparent', // 🔹 removes blue box on tap
+                                outline: 'none',
                             }}
                         >
                             {/* Icon with animated cylinder effect */}

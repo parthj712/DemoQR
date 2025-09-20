@@ -89,10 +89,10 @@ const Menu = () => {
     };
 
     return (
-        <Box display="flex" flexDirection="column" sx={{ backgroundColor: "#FAF3E0", minHeight: '100vh', overflowY: 'auto' }}>
+        <Box display="flex" flexDirection="column" sx={{ minHeight: '100vh', overflowY: 'auto' }}>
             <HeadingEMenu />
 
-            <Box display="flex" flexDirection="column" gap={2} pt={isMobile ? 0 : 10} pb={isMobile ? 5 : 10} sx={{ backgroundColor: "#FAF3E0" }}>
+            <Box display="flex" flexDirection="column" gap={2} pt={isMobile ? 0 : 10} pb={isMobile ? 5 : 10} sx={{ backgroundColor: theme.palette.background.default }}>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -125,7 +125,7 @@ const Menu = () => {
                                 {filteredItems.map(item => (
                                     <Grid item xs={12} sm={6} md={4} key={item.itemId}>
                                         <Card sx={{ backgroundColor: "transparent", boxShadow: 0 }}>
-                                            <Box display="flex" flexDirection={isSmallMobile ? "column" : "row"} gap={isSmallMobile ? 0 : 1.5}>
+                                            <Box display="flex" flexDirection={isSmallMobile ? "column" : "row"} gap={isSmallMobile ? 0 : 1.5} sx={{ backgroundColor: theme.palette.background.default }}>
                                                 <Box sx={{
                                                     width: isSmallMobile ? '100%' : isMobile ? 135 : null,
                                                     // height: isSmallMobile ? 310 : isMobile ? 200 : null,
@@ -143,58 +143,61 @@ const Menu = () => {
                                                     />
                                                 </Box>
 
-                                                <CardContent sx={{ py: 1.0, px: 0.5 }}>
-                                                    <Box display="flex" flexDirection="column" gap={0}>
-                                                        <Box display="flex" flexDirection="column" alignItems="baseline" mb={1}>
-                                                            <Typography fontSize={isSmallMobile ? "20px" : "16px"} fontWeight={600}>
-                                                                {language === 'mr' ? (item.title_mr || "") : (item.title_en || "")}
-                                                            </Typography>
+                                                <CardContent sx={{ pt: 1.0, pb : 1, px: 0.5 }}>
+                                                    <Box display="flex" flexDirection="column"  height="100%" alignItems={"flex-start"} justifyContent={"space-between"}>
+                                                        <Box display={"flex"} flexDirection={"column"}>
+                                                            <Box display="flex" flexDirection="column" alignItems="baseline" mb={1}>
+                                                                <Typography fontSize={isSmallMobile ? "20px" : "16px"} fontWeight={600}>
+                                                                    {language === 'mr' ? (item.title_mr || "") : (item.title_en || "")}
+                                                                </Typography>
 
-                                                            {item.spicyLevel > 0 && (
-                                                                <Stack direction="row" spacing={0.5}>
-                                                                    {Array.from({ length: item.spicyLevel }).map((_, idx) => (
-                                                                        <WhatshotIcon key={idx} color="error" fontSize="small" />
-                                                                    ))}
-                                                                </Stack>
-                                                            )}
+                                                                {item.spicyLevel > 0 && (
+                                                                    <Stack direction="row" spacing={0.5}>
+                                                                        {Array.from({ length: item.spicyLevel }).map((_, idx) => (
+                                                                            <WhatshotIcon key={idx} color="error" fontSize="small" />
+                                                                        ))}
+                                                                    </Stack>
+                                                                )}
+                                                            </Box>
+
+                                                            <DescriptionWithReadMore item={item} language={language} isSmallMobile={isSmallMobile} />
+
+                                                            <Typography fontSize={isSmallMobile ? "18px" : "20px"} sx={{
+                                                                background: 'linear-gradient(270deg, #FF6A00, #9B1C00, #FF6A00)',
+                                                                backgroundSize: '400% 400%',
+                                                                WebkitBackgroundClip: 'text',
+                                                                WebkitTextFillColor: 'transparent',
+                                                                animation: 'gradientMove 5s ease infinite',
+                                                                fontWeight: 700,
+                                                                '@keyframes gradientMove': {
+                                                                    '0%': { backgroundPosition: '0% 50%' },
+                                                                    '50%': { backgroundPosition: '100% 50%' },
+                                                                    '100%': { backgroundPosition: '0% 50%' },
+                                                                },
+                                                            }}>
+                                                                {language === 'mr' ? (item.price_mr || "") : (item.price_en || "")}
+                                                            </Typography>
                                                         </Box>
 
-                                                        <DescriptionWithReadMore item={item} language={language} isSmallMobile={isSmallMobile} />
+                                                        <Box display={"flex"}>
+                                                            <IconButton onClick={() => toggleFavorite({ ...item, uniqueId: `${section.sectionKey}-${item.itemId}` })}>
+                                                                {isFavorite(`${section.sectionKey}-${item.itemId}`) ? (
+                                                                    <FavoriteIcon color="error" />
+                                                                ) : (
+                                                                    <FavoriteBorderIcon />
+                                                                )}
+                                                            </IconButton>
 
-                                                        <Typography fontSize={isSmallMobile ? "18px" : "20px"} sx={{
-                                                            background: 'linear-gradient(270deg, #FF6A00, #9B1C00, #FF6A00)',
-                                                            backgroundSize: '400% 400%',
-                                                            WebkitBackgroundClip: 'text',
-                                                            WebkitTextFillColor: 'transparent',
-                                                            animation: 'gradientMove 5s ease infinite',
-                                                            fontWeight: 700,
-                                                            '@keyframes gradientMove': {
-                                                                '0%': { backgroundPosition: '0% 50%' },
-                                                                '50%': { backgroundPosition: '100% 50%' },
-                                                                '100%': { backgroundPosition: '0% 50%' },
-                                                            },
-                                                        }}>
-                                                            {language === 'mr' ? (item.price_mr || "") : (item.price_en || "")}
-                                                        </Typography>
-
-                                                        <IconButton onClick={() => toggleFavorite({ ...item, uniqueId: `${section.sectionKey}-${item.itemId}` })}>
-                                                            {isFavorite(`${section.sectionKey}-${item.itemId}`) ? (
-                                                                <FavoriteIcon color="error" />
-                                                            ) : (
-                                                                <FavoriteBorderIcon />
-                                                            )}
-                                                        </IconButton>
-
-                                                        <IconButton onClick={() => handleOpenDish(item)}>
-                                                            <DonutSmallIcon />
-                                                        </IconButton>
+                                                            <IconButton onClick={() => handleOpenDish(item)}>
+                                                                <DonutSmallIcon />
+                                                            </IconButton>
+                                                        </Box>
 
                                                         <DishDetailsDialog
                                                             dish={selectedDish}
                                                             open={!!selectedDish}
                                                             onClose={handleCloseDish}
                                                         />
-
                                                     </Box>
                                                 </CardContent>
                                             </Box>
