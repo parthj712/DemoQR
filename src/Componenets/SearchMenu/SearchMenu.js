@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Box, Button, CardMedia, TextField, Typography } from "@mui/material";
 import DiningConstant from "../Constant/AllConstant";
 
-const SearchMenu = ({ onNavigateToSection, onClearSearch, searchTerm, setSearchTerm , sectionKey }) => {
+const SearchMenu = ({ onNavigateToSection, onClearSearch, searchTerm, setSearchTerm, sectionKey }) => {
 
     const menuData = DiningConstant();
     const [filteredResults, setFilteredResults] = useState([]);
@@ -31,7 +31,7 @@ const SearchMenu = ({ onNavigateToSection, onClearSearch, searchTerm, setSearchT
         });
 
         setFilteredResults(results);
-    }, [searchTerm]);
+    }, [searchTerm, menuData]);
 
     const handleExploreClick = (sectionKey) => {
         onNavigateToSection(sectionKey); // scroll
