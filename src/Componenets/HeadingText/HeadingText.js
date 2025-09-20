@@ -5,6 +5,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useLanguage } from '@/Context/LanguageContext';
 import { keyframes } from '@emotion/react';
 import demo from "../../../public/demo.jpeg";
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 const HeadingText = () => {
 
@@ -38,9 +39,9 @@ const HeadingText = () => {
         <div>
             <Box display={"flex"} flexDirection={"column"} gap={2} py={1.5}>
 
-                <Box gap={1} display={"flex"} flexDirection={"row"} px={isMobile ? 3 : 0} py={isMobile ? 1.5 : 0} justifyContent={isMobile ? "space-between" : "center"} alignItems={"center"}>
+                <Box gap={1} display={"flex"} flexDirection={"row"} pl={isMobile ? 3 : 0} py={isMobile ? 1.5 : 0} justifyContent={isMobile ? "space-between" : "center"} alignItems={"center"}>
                     {/* demo */}
-                    <motion.div
+                    {/* <motion.div
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -52,7 +53,7 @@ const HeadingText = () => {
                             height={language === "mr" ? (isSmallMobile ? 80 : isMobile ? 130 : 160) : (isSmallMobile ? 80 : isMobile ? 120 : 160)} // you can adjust
                             priority // loads immediately
                         />
-                    </motion.div>
+                    </motion.div> */}
 
                     {/* hotel name */}
                     <motion.div
@@ -60,9 +61,9 @@ const HeadingText = () => {
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <Box display={"flex"} gap={language === "mr" ? (isSmallMobile ? 1 : 0) : 0} flexDirection={language === "mr" ? ("column") : (isSmallMobile ? "column" : "column")} justifyContent={isSmallMobile ? "center" : "center"} alignItems={language === "mr" ? (isSmallMobile ? "center" : "center") : (isSmallMobile ? "center" : "center")}>
+                        <Box display={"flex"} gap={language === "mr" ? (isSmallMobile ? 1 : 0) : 0} flexDirection={language === "mr" ? ("column") : (isSmallMobile ? "column" : "column")} justifyContent={isSmallMobile ? "flex-start" : "center"} alignItems={language === "mr" ? (isSmallMobile ? "flex-start" : "center") : (isSmallMobile ? "flex-start" : "center")}>
                             <Typography
-                                textAlign={"center"}
+                                textAlign={"left"}
                                 fontSize={language === "mr" ? (isSmallMobile ? "28px" : "32px") : (isSmallMobile ? "28px" : "32px")}
                                 fontWeight={500}
                                 sx={{
@@ -74,7 +75,7 @@ const HeadingText = () => {
                                 {mainTitle}
                             </Typography>
                             <Typography
-                                textAlign={"center"}
+                                textAlign={"left"}
                                 fontSize={language === "mr" ? (isSmallMobile ? "14px" : isMobile ? "21px" : "24px") : (isSmallMobile ? "14px" : isMobile ? "20px" : "24px")}
                                 fontWeight={600}
                                 sx={{
@@ -87,6 +88,18 @@ const HeadingText = () => {
                             </Typography>
                         </Box>
                     </motion.div>
+                    <Box
+                         pl={0.5}// padding left instead of padding right
+                        sx={{
+                            backgroundColor: "yellowgreen",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: "20px 0 0 20px", // optional rounded on left
+                        }}
+                    >
+                        {isMobile && <ThemeToggle />}
+                    </Box>
                 </Box>
                 {/* line */}
                 <motion.div
@@ -105,10 +118,6 @@ const HeadingText = () => {
                         }}
                     />
                 </motion.div>
-
-                {/* essential */}
-                
-
             </Box>
         </div>
     )

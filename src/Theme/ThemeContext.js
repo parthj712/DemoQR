@@ -32,7 +32,7 @@ export function ThemeContextProvider({ children }) {
                     mode,
                     ...(mode === "light"
                         ? {
-                            background: { default: "#fef8e3ff", paper: "#ffffff" },
+                            background: { default: "#fef8e3ff", paper: "#ececec" },
                             text: { primary: "#000000" },
                         }
                         : {

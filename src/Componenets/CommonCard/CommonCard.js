@@ -26,11 +26,17 @@ const CommonCard = ({ title_en, title_mr, imageUpload, imageUrl }) => {
                 borderRadius: 5,
                 overflow: 'hidden',
                 borderBottom: '3.5px solid transparent',
-                background: `linear-gradient(#fff, #fff) padding-box, 
-                  linear-gradient(to right, #FF6A00, #FFD700) border-box`,
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-                width: '100%',      // 👈 always full width of parent
-                maxWidth: '100%',      // 👈 optional limit, can remove if you want fluid
+                background: `
+      linear-gradient(${theme.palette.mode === "light" ? "#ffffff" : "#1e1e1e"}, 
+                      ${theme.palette.mode === "light" ? "#ffffff" : "#1e1e1e"}) padding-box, 
+      linear-gradient(to right, #FF6A00, #FFD700) border-box
+    `,
+                boxShadow:
+                    theme.palette.mode === "light"
+                        ? "0 4px 10px rgba(0, 0, 0, 0.1)"
+                        : "0 4px 12px rgba(255, 255, 255, 0.08)", // softer shadow in dark
+                width: "100%",
+                maxWidth: "100%",
                 mb: 2,
             }}>
                 <CardActionArea
@@ -38,20 +44,25 @@ const CommonCard = ({ title_en, title_mr, imageUpload, imageUrl }) => {
                         display: "flex",
                         flexDirection: "row", // 👈 row for eng+small, column otherwise
                         alignItems: "center",
-                        width: '100%',  
+                        width: '100%',
                     }}>
                     <ImageWithFallback
                         src={imageUpload}
                         alt={title_en}
                     />
-                    <CardContent sx={{ px: isEngAndSmall ? "22px" : null , flex: 1 }}> {/* 👈 text takes remaining space */}
-                        <Typography fontSize={language === 'mr' ? (isSmallMobile ? "17px" : '16px') : (isSmallMobile ? "17px" : '16px')} textAlign={"center"} fontWeight={500} sx={{ color: "#aa02aaff" }}>
+                    <CardContent sx={{ px: isEngAndSmall ? "22px" : null, flex: 1 }}> {/* 👈 text takes remaining space */}
+                        <Typography fontSize={language === 'mr' ? (isSmallMobile ? "17px" : '16px') : (isSmallMobile ? "17px" : '16px')} textAlign={"center"} fontWeight={500} sx={{
+                            color:
+                                theme.palette.mode === "light"
+                                    ? "#aa02aa" // your custom magenta in light mode
+                                    : theme.palette.text.primary, // auto-adjusts in dark mode
+                        }}>
                             {language === 'mr' ? title_mr : title_en}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
-        </div>
+        </div >
     )
 }
 
