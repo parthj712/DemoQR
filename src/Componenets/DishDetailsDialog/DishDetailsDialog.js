@@ -13,8 +13,11 @@ import {
     ListItem,
     ListItemText,
     Box,
+    Tooltip,
+    IconButton,
 } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import ShareIcon from '@mui/icons-material/Share';
 
 const DishDetailsDialog = ({ dish, open, onClose }) => {
     if (!dish) return null;
