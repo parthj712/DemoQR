@@ -27,6 +27,7 @@ export const DiningConstant = () => [
                 },
                 allergyWarnings: ["Contains gluten (wheat), mustard seeds, dairy (curd in koshimbir)"],
                 ingredients: ["Whole wheat flour", "Seasonal vegetables"],
+                recommended: false,
             },
             {
                 itemId: 'item2',
@@ -38,6 +39,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.120/-",
                 image: 'https://i.pinimg.com/1200x/d5/58/a0/d558a0f400f30e345a5a28cc902f6a2d.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item3',
@@ -49,6 +51,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.150/-",
                 image: 'https://i.pinimg.com/736x/60/cc/c9/60ccc97101fee60e9994209140c5d588.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item4',
@@ -60,6 +63,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.200/-",
                 image: 'https://i.pinimg.com/736x/ea/5b/98/ea5b98df03197fd041d0efe7ed2899fd.jpg',
                 type: "veg",
+                recommended: true, // ⭐ Chef’s Recommendation
             },
             {
                 itemId: 'item5',
@@ -71,6 +75,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.150/-",
                 image: 'https://i.pinimg.com/736x/3c/5c/3c/3c5c3c87b65fe5aa782606b08e3af525.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item6',
@@ -82,6 +87,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.160/-",
                 image: 'https://i.pinimg.com/1200x/33/5e/ef/335eef559fc854aeca6db94da43a86d9.jpg',
                 type: "veg",
+                recommended: false,
             },
         ],
     },
@@ -102,6 +108,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.५०/-",
                 image: 'https://i.pinimg.com/1200x/f0/47/d9/f047d9b745934e8053ec12411ca5e833.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item2',
@@ -111,6 +118,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.८०/-",
                 image: 'https://i.pinimg.com/736x/ae/92/8f/ae928f544f99e94378fa6d8cbe569180.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item3',
@@ -120,6 +128,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.६०/-",
                 image: 'https://i.pinimg.com/1200x/9d/df/97/9ddf978ea7c0c51a6a2ad82efb6bf828.jpg',
                 type: "veg",
+                recommended: true, // ⭐ Chef’s Recommendation
             },
             {
                 itemId: 'item4',
@@ -129,6 +138,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.६०/-",
                 image: 'https://i.pinimg.com/1200x/17/1b/5b/171b5b885ac8440b620f6c7b444250ab.jpg',
                 type: "veg",
+                recommended: true, // ⭐ Chef’s Recommendation
             },
             {
                 itemId: 'item5',
@@ -138,6 +148,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.३०/-",
                 image: 'https://i.pinimg.com/736x/3d/a4/56/3da456bee27ced71401ba380040d1514.jpg',
                 type: "veg",
+                recommended: true, // ⭐ Chef’s Recommendation
             },
             {
                 itemId: 'item6',
@@ -147,6 +158,7 @@ export const DiningConstant = () => [
                 price_mr: "रू.४५/-",
                 image: 'https://i.pinimg.com/736x/c1/b3/d5/c1b3d5d6a06b01be70ad62875e3364f9.jpg',
                 type: "veg",
+                recommended: true, // ⭐ Chef’s Recommendation
             },
         ],
     }
@@ -166,6 +178,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.110/-",
                 image: 'https://i.pinimg.com/1200x/71/d6/db/71d6db959ed3f8e47e7ef8ccbf74ea7f.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item2',
@@ -175,6 +188,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.110/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item3',
@@ -184,6 +198,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.180/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item4',
@@ -193,6 +208,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.120/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                
             },
         ],
     },
@@ -211,6 +227,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.20/-",
                 image: 'https://i.pinimg.com/1200x/71/d6/db/71d6db959ed3f8e47e7ef8ccbf74ea7f.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item2',
@@ -220,6 +237,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.20/",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item3',
@@ -229,6 +247,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.40/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item4',
@@ -238,6 +257,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.150/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item5',
@@ -247,6 +267,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.160/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item6',
@@ -256,6 +277,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.190/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item7',
@@ -265,6 +287,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.160/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item8',
@@ -274,6 +297,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.180/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
+                recommended: false,
             },
             {
                 itemId: 'item9',
@@ -283,6 +307,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.260/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "nonveg",
+                recommended: false,
             },
         ],
     },
@@ -300,6 +325,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item2',
@@ -308,6 +334,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.180/- (Full), Rs.110/- (Half)",
                 price_mr: "Rs.180/- (Full), Rs.110/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item3',
@@ -316,6 +343,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.100/- (Full), Rs.70/- (Half)",
                 price_mr: "Rs.100/- (Full), Rs.70/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: true, // ⭐ Chef’s Recommendation
             },
             {
                 itemId: 'item4',
@@ -324,6 +352,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/-",
                 price_mr: "Rs.220/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item5',
@@ -332,6 +361,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item6',
@@ -340,6 +370,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item7',
@@ -348,6 +379,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/-",
                 price_mr: "Rs.220/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item8',
@@ -356,6 +388,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item9',
@@ -364,6 +397,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.180/-",
                 price_mr: "Rs.180/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item10',
@@ -372,6 +406,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.180/-",
                 price_mr: "Rs.180/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item11',
@@ -380,6 +415,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.180/- (Full), Rs.120/- (Half)",
                 price_mr: "Rs.180/- (Full), Rs.120/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item12',
@@ -388,6 +424,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.180/-",
                 price_mr: "Rs.180/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item13',
@@ -396,6 +433,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.260/-",
                 price_mr: "Rs.260/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item14',
@@ -404,6 +442,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.250/-",
                 price_mr: "Rs.250/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item15',
@@ -412,6 +451,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item16',
@@ -420,6 +460,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item17',
@@ -428,6 +469,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.180/-",
                 price_mr: "Rs.180/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item18',
@@ -436,6 +478,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item19',
@@ -444,6 +487,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.120/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.120/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item20',
@@ -452,6 +496,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item21',
@@ -460,6 +505,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.210/-",
                 price_mr: "Rs.210/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item22',
@@ -468,6 +514,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.210/-",
                 price_mr: "Rs.210/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item23',
@@ -476,6 +523,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.210/-",
                 price_mr: "Rs.210/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item24',
@@ -484,6 +532,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.200/- (Full), Rs.120/- (Half)",
                 price_mr: "Rs.200/- (Full), Rs.120/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item25',
@@ -492,6 +541,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.210/- (Full), Rs.120/- (Half)",
                 price_mr: "Rs.210/- (Full), Rs.120/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item26',
@@ -500,6 +550,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item27',
@@ -508,6 +559,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/-",
                 price_mr: "Rs.220/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item28',
@@ -516,6 +568,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
                 nutritionalFacts: {
                     calories: 250,
                     protein: "12g",
@@ -524,6 +577,7 @@ export const DiningConstant = () => [
                 },
                 allergyWarnings: ["Contains Dairy"],
                 ingredients: ["Paneer", "Yogurt", "Spices", "Capsicum"],
+                recommended: false,
             },
             {
                 itemId: 'item29',
@@ -532,6 +586,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: true, // ⭐ Chef’s Recommendation
             },
             {
                 itemId: 'item30',
@@ -540,6 +595,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item31',
@@ -548,6 +604,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.300/-",
                 price_mr: "Rs.300/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item32',
@@ -556,6 +613,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item33',
@@ -564,6 +622,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.190/- (Full), Rs.110/- (Half)",
                 price_mr: "Rs.190/- (Full), Rs.110/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
             },
             {
                 itemId: 'item34',
@@ -572,6 +631,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.220/- (Full), Rs.130/- (Half)",
                 price_mr: "Rs.220/- (Full), Rs.130/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
 
             },
             {
@@ -581,6 +641,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.150/ (Full), Rs.90/- (Half)",
                 price_mr: "Rs.150/- (Full), Rs.90/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
 
             },
             {
@@ -590,6 +651,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.160/ (Full), Rs.100/- (Half)",
                 price_mr: "Rs.160/- (Full), Rs.100/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
 
             },
             {
@@ -599,6 +661,7 @@ export const DiningConstant = () => [
                 price_en: "Rs.170/ (Full), Rs.110/- (Half)",
                 price_mr: "Rs.170/- (Full), Rs.110/- (Half)",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                recommended: false,
 
             },
         ]
