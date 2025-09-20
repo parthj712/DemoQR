@@ -25,7 +25,9 @@ import DiningConstant from '@/Componenets/Constant/AllConstant';
 import VegNonVegToggle from '@/Componenets/VegNonVegToggle/VegNonVegToggle';
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import DonutSmallIcon from '@mui/icons-material/DonutSmall';
 import { useFavorites } from '@/Theme/ThemeContext';
+import DishDetailsDialog from '@/Componenets/DishDetailsDialog/DishDetailsDialog';
 
 
 const Menu = () => {
@@ -36,6 +38,9 @@ const Menu = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [filterType, setFilterType] = useState("all"); // ✅ filter state
+
+    const [selectedDish, setSelectedDish] = useState(null);
+
 
     const { isFavorite, toggleFavorite } = useFavorites();
 
@@ -73,6 +78,15 @@ const Menu = () => {
             ? section.items
             : section.items.filter((item) => item.type === filterType);
 
+
+
+    const handleOpenDish = (dish) => {
+        setSelectedDish(dish);
+    };
+
+    const handleCloseDish = () => {
+        setSelectedDish(null);
+    };
 
     return (
         <Box display="flex" flexDirection="column" sx={{ backgroundColor: "#FAF3E0", minHeight: '100vh', overflowY: 'auto' }}>
@@ -171,7 +185,15 @@ const Menu = () => {
                                                             )}
                                                         </IconButton>
 
+                                                        <IconButton onClick={() => handleOpenDish(item)}>
+                                                            <DonutSmallIcon />
+                                                        </IconButton>
 
+                                                        <DishDetailsDialog
+                                                            dish={selectedDish}
+                                                            open={!!selectedDish}
+                                                            onClose={handleCloseDish}
+                                                        />
 
                                                     </Box>
                                                 </CardContent>

@@ -18,6 +18,15 @@ export const DiningConstant = () => [
                 price_mr: "रू.60/-",
                 image: 'https://i.pinimg.com/1200x/83/73/7b/83737b6a0b664da8407ebe0d496903fd.jpg',
                 type: "veg",
+                nutritionalFacts: {
+                    calories: ~350,
+                    protein: "8g",
+                    fat: "45g",
+                    carbs: "12g",
+                    fibre: "6g"
+                },
+                allergyWarnings: ["Contains gluten (wheat), mustard seeds, dairy (curd in koshimbir)"],
+                ingredients: ["Whole wheat flour", "Seasonal vegetables"],
             },
             {
                 itemId: 'item2',
@@ -507,6 +516,14 @@ export const DiningConstant = () => [
                 price_en: "Rs.240/-",
                 price_mr: "Rs.240/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
+                nutritionalFacts: {
+                    calories: 250,
+                    protein: "12g",
+                    fat: "15g",
+                    carbs: "18g",
+                },
+                allergyWarnings: ["Contains Dairy"],
+                ingredients: ["Paneer", "Yogurt", "Spices", "Capsicum"],
             },
             {
                 itemId: 'item29',
