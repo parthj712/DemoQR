@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     Typography,
     Box,
@@ -28,6 +28,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import DonutSmallIcon from '@mui/icons-material/DonutSmall';
 import { useFavorites } from '@/Theme/ThemeContext';
 import DishDetailsDialog from '@/Componenets/DishDetailsDialog/DishDetailsDialog';
+import DishActions from '@/Componenets/DishActions';
 
 
 const Menu = () => {
@@ -43,6 +44,8 @@ const Menu = () => {
 
 
     const { isFavorite, toggleFavorite } = useFavorites();
+
+    const favIconRef = useRef();
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -127,24 +130,26 @@ const Menu = () => {
                                         <Card sx={{ backgroundColor: "transparent", boxShadow: 0 }}>
                                             <Box display="flex" flexDirection={isSmallMobile ? "column" : "row"} gap={isSmallMobile ? 0 : 1.5} sx={{ backgroundColor: theme.palette.background.default }}>
                                                 <Box sx={{
-                                                    width: isSmallMobile ? '100%' : isMobile ? 135 : null,
-                                                    // height: isSmallMobile ? 310 : isMobile ? 200 : null,
-                                                    height: isMobile ? 200 : null,
+                                                    width: isSmallMobile ? '100%' : isMobile ? 135 : 150, // give a default width for larger screens
+                                                    height: isSmallMobile ? 200 : isMobile ? 200 : 180,  // fixed height
                                                     overflow: 'hidden',
                                                     borderRadius: 2,
-                                                    flexShrink: 0,
+                                                    flexShrink: 0, // prevent shrinking
+                                                    flexGrow: 0,   // prevent growing
+                                                    flexBasis: isSmallMobile ? '100%' : isTablet ? '135px' : '150px'
+
                                                 }}>
                                                     <CardMedia
                                                         component="img"
                                                         image={"/demo.jpeg"}
                                                         alt={item.title_en || "Item"}
                                                         sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                                        onError={(e) => { e.currentTarget.src = "/demo.jpeg"; }} // 👈 runtime fallback
                                                     />
                                                 </Box>
 
-                                                <CardContent sx={{ pt: 1.0, pb : 1, px: 0.5 }}>
-                                                    <Box display="flex" flexDirection="column"  height="100%" alignItems={"flex-start"} justifyContent={"space-between"}>
+
+                                                <CardContent sx={{ pt: 1.0, pb: 1, px: 0.5 }}>
+                                                    <Box display="flex" flexDirection="column" height="100%" alignItems={"flex-start"} justifyContent={"space-between"}>
                                                         <Box display={"flex"} flexDirection={"column"}>
                                                             <Box display="flex" flexDirection="column" alignItems="baseline" mb={1}>
                                                                 <Typography fontSize={isSmallMobile ? "20px" : "16px"} fontWeight={600}>
@@ -179,25 +184,22 @@ const Menu = () => {
                                                             </Typography>
                                                         </Box>
 
-                                                        <Box display={"flex"}>
-                                                            <IconButton onClick={() => toggleFavorite({ ...item, uniqueId: `${section.sectionKey}-${item.itemId}` })}>
-                                                                {isFavorite(`${section.sectionKey}-${item.itemId}`) ? (
-                                                                    <FavoriteIcon color="error" />
-                                                                ) : (
-                                                                    <FavoriteBorderIcon />
-                                                                )}
-                                                            </IconButton>
-
-                                                            <IconButton onClick={() => handleOpenDish(item)}>
-                                                                <DonutSmallIcon />
-                                                            </IconButton>
-                                                        </Box>
+                                                        <DishActions
+                                                            item={item}
+                                                            section={section}
+                                                            isFavorite={isFavorite}
+                                                            toggleFavorite={toggleFavorite}
+                                                            handleOpenDish={handleOpenDish}
+                                                            favRef={favIconRef}
+                                                        />
 
                                                         <DishDetailsDialog
                                                             dish={selectedDish}
                                                             open={!!selectedDish}
                                                             onClose={handleCloseDish}
                                                         />
+
+
                                                     </Box>
                                                 </CardContent>
                                             </Box>

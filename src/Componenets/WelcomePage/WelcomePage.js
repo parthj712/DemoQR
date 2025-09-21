@@ -31,7 +31,7 @@ const WelcomePage = () => {
                 <LanguageToggle />
             </div>
             <Box display={"flex"} flexDirection={"column"} px={4.5} gap={4}>
-                <Typography sx={{ alignItems: "left" }} fontSize="50px" color="#D2691E" fontWeight={500}>{titleTop}</Typography>
+                <Typography sx={{ alignItems: "left" }} fontSize="42px" color="#D2691E" fontWeight={500}>{titleTop}</Typography>
                 <Button
                     fullWidth
                     variant="contained"
@@ -40,7 +40,7 @@ const WelcomePage = () => {
                         mt: 3,
                         py: 1.5,
                         borderRadius: 4,
-                        backgroundColor: isDark ? "#4B0082" : "#800080", // purple shades
+                        backgroundColor: isDark ? "#DE00DE" : "#800080", // purple shades
                         color: isDark ? "#ececec" : "#fff", // text color
                         "&:hover": {
                             backgroundColor: isDark ? "#5A189A" : "#9932CC", // hover effect

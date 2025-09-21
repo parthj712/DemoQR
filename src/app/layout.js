@@ -6,6 +6,7 @@ import theme from "@/Theme/theme";
 import { LanguageProvider } from "@/Context/LanguageContext";
 import Applayout from "@/Componenets/AppLayout/Applayout";
 import { FavoritesProvider, ThemeContextProvider } from "@/Theme/ThemeContext";
+import ThemeToggle from "@/Componenets/ThemeToggle/ThemeToggle";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,6 +30,16 @@ export default function RootLayout({ children }) {
                 {children}
               </Box>
               <Applayout />
+              <Box
+                color="secondary"
+                sx={{
+                  position: "fixed",
+                  bottom: 100, // above BottomMenu
+                  right: 20,
+                }}
+              >
+                <ThemeToggle />
+              </Box>
             </LanguageProvider>
           </FavoritesProvider>
         </ThemeContextProvider>

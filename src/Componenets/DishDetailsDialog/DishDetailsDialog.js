@@ -12,14 +12,16 @@ import {
     List,
     ListItem,
     ListItemText,
-    Box,
-    Tooltip,
     IconButton,
 } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import ShareIcon from '@mui/icons-material/Share';
+import HeadingEMenu from "../HeadingEMemu/HeadingEMenu";
+import { useLanguage } from "@/Context/LanguageContext";
 
 const DishDetailsDialog = ({ dish, open, onClose }) => {
+    const { language } = useLanguage(); // call hook unconditionally
+
     if (!dish) return null;
 
     const handleShare = async () => {
@@ -43,65 +45,60 @@ const DishDetailsDialog = ({ dish, open, onClose }) => {
     };
 
     return (
-        <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-            <Box display={"flex"} flexDirection={"row"}>
-                <DialogTitle>
-                    {dish.title_en}
+        <>
+            <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm"
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center', // vertical center
+                    justifyContent: 'center', // horizontal center
+                }}>
+                <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Typography>{language === 'mr' ? dish.title_mr : dish.title_en}</Typography>
+                    <IconButton onClick={onClose}>
+                        <CloseIcon />
+                    </IconButton>
                 </DialogTitle>
 
-                <DialogActions>
-                    <Tooltip title="Share this dish">
-                        <IconButton onClick={handleShare} color="primary">
-                            <ShareIcon />
-                        </IconButton>
-                    </Tooltip>
-                    <Button onClick={onClose} color="secondary">
-                        <CloseIcon />
-                    </Button>
-                </DialogActions>
-            </Box>
-            <DialogContent dividers>
+                <DialogContent dividers sx={{ maxHeight: '60vh', overflowY: 'auto', px: 4 }}>
+                    <Typography variant="subtitle1" gutterBottom>
+                        {language === 'mr' ? "पोषक तत्व" : "Nutritional Facts"}:
+                    </Typography>
+                    <List dense sx={{ p: 0 }}>
+                        {Object.entries(dish.nutritionalFacts?.[language] || {}).map(([key, val]) => (
+                            <ListItem key={key} sx={{ p: 0 }}>
+                                <ListItemText primary={`${key}: ${val}`} />
+                            </ListItem>
+                        ))}
+                    </List>
 
-                <Typography variant="subtitle1" gutterBottom>
-                    Nutritional Facts:
-                </Typography>
-                <List>
-                    {Object.entries(dish.nutritionalFacts).map(([key, val]) => (
-                        <ListItem key={key}>
-                            <ListItemText primary={`${key}: ${val}`} />
-                        </ListItem>
-                    ))}
-                </List>
+                    <Divider sx={{ my: 2 }} />
 
-                <Divider sx={{ my: 2 }} />
+                    <Typography variant="subtitle1" gutterBottom>
+                        {language === 'mr' ? "एलर्जी सूचना" : "Allergy Warnings"}:
+                    </Typography>
+                    <List dense sx={{ p: 0 }}>
+                        {(dish.allergyWarnings?.[language] || []).map((warn, idx) => (
+                            <ListItem key={idx} sx={{ p: 0 }}>
+                                <ListItemText primary={warn} />
+                            </ListItem>
+                        ))}
+                    </List>
 
-                <Typography variant="subtitle1" gutterBottom>
-                    Allergy Warnings:
-                </Typography>
-                <List dense>
-                    {dish.allergyWarnings.map((warn, idx) => (
-                        <ListItem key={idx}>
-                            <ListItemText primary={warn} />
-                        </ListItem>
-                    ))}
-                </List>
+                    <Divider sx={{ my: 2 }} />
 
-                <Divider sx={{ my: 2 }} />
-
-                <Typography variant="subtitle1" gutterBottom>
-                    Ingredients:
-                </Typography>
-                <List dense>
-                    {dish.ingredients.map((ing, idx) => (
-                        <ListItem key={idx}>
-                            <ListItemText primary={ing} />
-                        </ListItem>
-                    ))}
-                </List>
-            </DialogContent>
-
-
-        </Dialog>
+                    <Typography variant="subtitle1" gutterBottom>
+                        {language === 'mr' ? "साहित्य" : "Ingredients"}:
+                    </Typography>
+                    <List dense sx={{ p: 0 }}>
+                        {(dish.ingredients?.[language] || []).map((ing, idx) => (
+                            <ListItem key={idx} sx={{ p: 0 }}>
+                                <ListItemText primary={ing} />
+                            </ListItem>
+                        ))}
+                    </List>
+                </DialogContent>
+            </Dialog>
+        </>
     );
 };
 

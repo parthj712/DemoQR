@@ -19,14 +19,29 @@ export const DiningConstant = () => [
                 image: 'https://i.pinimg.com/1200x/83/73/7b/83737b6a0b664da8407ebe0d496903fd.jpg',
                 type: "veg",
                 nutritionalFacts: {
-                    calories: ~350,
-                    protein: "8g",
-                    fat: "45g",
-                    carbs: "12g",
-                    fibre: "6g"
+                    en: {
+                        calories: "Approx 350 kcal",
+                        protein: "8g",
+                        fat: "45g",
+                        carbs: "12g",
+                        fibre: "6g"
+                    },
+                    mr: {
+                        calories: "सुमारे 350 कॅलरी",
+                        protein: "8 ग्रॅम",
+                        fat: "45 ग्रॅम",
+                        carbs: "12 ग्रॅम",
+                        fibre: "6 ग्रॅम"
+                    }
                 },
-                allergyWarnings: ["Contains gluten (wheat), mustard seeds, dairy (curd in koshimbir)"],
-                ingredients: ["Whole wheat flour", "Seasonal vegetables"],
+                allergyWarnings: {
+                    en: ["Contains gluten (wheat), mustard seeds, dairy (curd in koshimbir)"],
+                    mr: ["यात ग्लूटन (गव्हाचे), मोहरीचे दाणे, दुधाचे पदार्थ (कोशिंबीरमधील दही) आहेत"]
+                },
+                ingredients: {
+                    en: ["Whole wheat flour", "Seasonal vegetables"],
+                    mr: ["संपूर्ण गव्हाचे पीठ", "हंगामी भाजीपाला"]
+                },
                 recommended: false,
             },
             {
@@ -208,7 +223,7 @@ export const DiningConstant = () => [
                 price_mr: "Rs.120/-",
                 image: 'https://i.pinimg.com/736x/0e/94/16/0e941654c6d2c48e9624a40df84c0a73.jpg',
                 type: "veg",
-                
+
             },
         ],
     },
