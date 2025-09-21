@@ -35,12 +35,12 @@ const HeadingEMenu = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             >
-                <Box display={"flex"} flexDirection={"column"} gap={1} 
-                sx={{
-                    position: "sticky",
-                    top: 0,
-                    zIndex: 1100,
-                }}>
+                <Box display={"flex"} flexDirection={"column"} gap={1}
+                    sx={{
+                        position: "sticky",
+                        top: 0,
+                        zIndex: 1100,
+                    }}>
                     <motion.div
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
@@ -51,19 +51,24 @@ const HeadingEMenu = () => {
                             position: "sticky",
                             top: 0,              // sticks to top
                             zIndex: 1000,        // keeps it above other elements
-                            background: theme.palette.background.default, // prevent text overlap when scrolling
+                            // background: theme.palette.background.default, // prevent text overlap when scrolling
                         }}
                     >
                         <Typography
                             textAlign="center"
-                            fontSize={isSmallMobile ? "15px" : isMobile ? "18px" : "22px"}
-                            fontWeight={600}
+                            fontSize={isSmallMobile ? "14px" : isMobile ? "18px" : "22px"}
+                            fontWeight={500}
                             p={0.5}
+
                             sx={{
                                 position: "relative",
-                                color: "#AA2E30",
+                                color: "#E63E44",
                                 overflow: "hidden",
                                 display: "inline-block",
+                                border: `1px solid ${theme.palette.mode === 'light' ? '#fff' : '#444'}`, // dynamic border
+                                py: 1.2,
+                                px: 1.8,
+                                borderRadius: 10,
                                 "&::before": {
                                     content: '""',
                                     position: "absolute",
@@ -104,7 +109,7 @@ const HeadingEMenu = () => {
                             {menuTitle}
                         </Typography>
                         {isMobile && <LanguageToggle />}
-                        
+
 
 
                     </Box>
