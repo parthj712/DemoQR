@@ -11,6 +11,7 @@ import SubmitButton from "../SubmitButton/SubmitButton";
 import { useLanguage } from "@/Context/LanguageContext";
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import HeadingEMenu from "../HeadingEMemu/HeadingEMenu";
+import feedback from "../../../public/feedback.svg"
 
 
 export default function FeedbackForm() {
@@ -147,14 +148,11 @@ export default function FeedbackForm() {
             return;
         }
 
-
-        https://script.google.com/macros/s/AKfycbxkUE489649v3wp-GTB_As5s5bv-z6e_Qjsjwzgr2ezJkPcqeXRxW0670I0SaamQQQO/exec
-
         setLoading(true); // start loader
 
         try {
             const response = await fetch(
-                "https://script.google.com/macros/s/AKfycbxkUE489649v3wp-GTB_As5s5bv-z6e_Qjsjwzgr2ezJkPcqeXRxW0670I0SaamQQQO/exec",
+                "https://script.google.com/macros/s/AKfycbyHjEOVsbWks_uVuDuGchXv_FZ75t2DKKvBJfYxEg0bnt5j662dEDYXXUQA5e8xAIz7/exec",
                 {
                     method: "POST",
                     headers: {
@@ -198,18 +196,6 @@ export default function FeedbackForm() {
     };
 
 
-    // const handleImageChange = (e) => {
-    //     const file = e.target.files[0];
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.onloadend = () => {
-    //             setFormData((prev) => ({ ...prev, imageUrl: reader.result }));
-    //         };
-    //         reader.readAsDataURL(file); // converts file to base64 string
-    //     }
-    // };
-
-
     return (
 
         <motion.div
@@ -241,20 +227,41 @@ export default function FeedbackForm() {
                     <HeadingEMenu />
                 </Box>
 
+                <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} mx={4} py={1.5}>
+                    <Box display="flex" alignItems="center" gap={1} onClick={() => router.back()} sx={{ cursor: 'pointer' }}>
+                        <ArrowBackRoundedIcon sx={{ color: "#800080" }} fontSize={isMobile ? 'medium' : 'medium'} />
+                        {!isMobile && <Typography>Back</Typography>}
+                    </Box>
+                    <Typography textAlign={"end"} fontWeight={600} fontSize={isSmallMobile ? "18px" : "22px"}>{FeedbackText}</Typography>
+                </Box>
 
-                <Box display={"flex"} flexDirection={"column"} px={3} py={3.5} mt={4} mx={3.5} sx={{
+                <Box
+                    position="absolute"
+                    top={"371px"}
+                    left={"0px"}
+                    width="100%"
+                    height="50%"
+                    sx={{
+                        zIndex: 0,       // behind all content
+                        opacity: 0.2,   // low opacity
+                        pointerEvents: "none", // allows clicks through image
+                    }}
+                >
+                    <Image
+                        src={feedback}
+                        alt="Feedback Background"
+                        style={{ width: "50%", height: "50%", objectFit: "cover" }}
+                        priority
+                    />
+                </Box>
+
+                <Box display={"flex"} flexDirection={"column"} px={3} py={3.5} mt={1} mx={3.5} sx={{
                     boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', backgroundColor:
-                        theme.palette.mode === "dark" ? "#1e1e1e" : "white", borderRadius: "28px"
+                        theme.palette.mode === "dark" ? "#1e1e1e" : "white", borderRadius: "20px",
+                    overflow: "hidden",
                 }}>
 
 
-                    <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} pb={2}>
-                        <Box display="flex" alignItems="center" gap={1} onClick={() => router.back()} sx={{ cursor: 'pointer' }}>
-                            <ArrowBackRoundedIcon sx={{ color: "#800080" }} fontSize={isMobile ? 'medium' : 'medium'} />
-                            {!isMobile && <Typography>Back</Typography>}
-                        </Box>
-                        <Typography textAlign={"end"} fontWeight={600} fontSize={isSmallMobile ? "18px" : "22px"}>{FeedbackText}</Typography>
-                    </Box>
 
 
                     <Box

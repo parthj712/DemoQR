@@ -5,7 +5,6 @@ import React from 'react'
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { keyframes } from '@emotion/react';
 import { useLanguage } from '@/Context/LanguageContext';
-import LanguageToggle from '../LanguageToggle/LanguageToggle';
 import demo from "../../../public/demo.jpeg";
 
 
@@ -43,9 +42,7 @@ const Intropage = () => {
             alignItems: 'center',
             backgroundColor: theme.palette.background.default,
         }}>
-            <div style={{ position: "absolute", top: "50px", right: "40px" }}>
-                <LanguageToggle />
-            </div>
+
             <div style={{
                 height: '100vh',
                 display: 'flex',
@@ -53,14 +50,15 @@ const Intropage = () => {
                 justifyContent: 'flex-start',
                 alignItems: 'center',
                 paddingTop: 170,
-                gap: 13
+                gap: 16
             }}>
                 <Image
                     src={demo}
                     alt="Manas Hotel Logo"
-                    width={isSmallMobile ? 240 : 240} // you can adjust
-                    height={isSmallMobile ? 160 : 160} // you can adjust
+                    width={isSmallMobile ? 160 : isMobile ? 220 : 240} // you can adjust
+                    height={isSmallMobile ? 160 : isMobile ? 140 :  160} // you can adjust
                     priority // loads immediately
+                    style={{borderRadius : 15}}
                 />
                 <Box
                     display="flex"
@@ -71,8 +69,8 @@ const Intropage = () => {
                     {/* Main Title with Gradient */}
                     <Typography
                         textAlign="center"
-                        fontSize={isSmallMobile ? "50px" : "50px"}
-                        fontWeight={700}
+                        fontSize={isSmallMobile ? "30px" : isMobile ? "35px" :  "50px"}
+                        fontWeight={600}
                     >
                         {mainTitle}
                     </Typography>
@@ -80,8 +78,8 @@ const Intropage = () => {
                     {/* Secondary Title */}
                     <Typography
                         textAlign="center"
-                        fontSize={isSmallMobile ? "28px" : "24px"}
-                        fontWeight={700}
+                        fontSize={isSmallMobile ? "18px" : isMobile ? "22px" :  "24px"}
+                        fontWeight={600}
                         sx={{
                             position: "relative",
                             display: "inline-block",

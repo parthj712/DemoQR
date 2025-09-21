@@ -88,18 +88,7 @@ const HeadingText = () => {
                             </Typography>
                         </Box>
                     </motion.div>
-                    <Box
-                         pl={0.5}// padding left instead of padding right
-                        sx={{
-                            backgroundColor: "yellowgreen",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            borderRadius: "20px 0 0 20px", // optional rounded on left
-                        }}
-                    >
-                        {isMobile && <ThemeToggle />}
-                    </Box>
+
                 </Box>
                 {/* line */}
                 <motion.div

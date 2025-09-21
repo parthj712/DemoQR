@@ -12,6 +12,7 @@ import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import { useLanguage } from "@/Context/LanguageContext";
 import DiningConstant from "../Constant/AllConstant";
 import HeadingEMenu from "../HeadingEMemu/HeadingEMenu";
+import search from "../../../public/search.svg"
 
 
 export default function SearchPage() {
@@ -186,6 +187,39 @@ export default function SearchPage() {
                                 No dishes found.
                             </Typography>
                         )}
+
+
+                        {(!searchTerm || filteredResults.length === 0) && (
+                            <Box
+                                mt={4}
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="center"
+                                flexDirection="column"
+                                gap={4}
+                                px={2}
+                                my={10}
+                            >
+                                <Image
+                                    src={search}
+                                    alt="Empty Favorites"
+                                    style={{ width: "40%", height: "auto" }}
+                                    priority
+                                />
+
+                                <Typography
+                                    variant={isMobile ? "body2" : "h6"}
+                                    color={theme.palette.text.primary}
+                                    textAlign="center"
+                                    sx={{ opacity: 0.6 }}
+                                >
+                                    {language === 'mr'
+                                        ? "आपला आवडता पदार्थ शोधण्यासाठी शोध बॉक्स वापरा"
+                                        : "Search to find your favorite dish"}
+                                </Typography>
+                            </Box>
+                        )}
+
                     </Box >
                 </Box>
             </motion.div>
