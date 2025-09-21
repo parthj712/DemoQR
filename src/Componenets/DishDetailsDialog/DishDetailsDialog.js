@@ -20,9 +20,9 @@ import HeadingEMenu from "../HeadingEMemu/HeadingEMenu";
 import { useLanguage } from "@/Context/LanguageContext";
 
 const DishDetailsDialog = ({ dish, open, onClose }) => {
-    if (!dish) return null;
+    const { language } = useLanguage(); // call hook unconditionally
 
-    const { language } = useLanguage();
+    if (!dish) return null;
 
     const handleShare = async () => {
         const shareUrl = `${window.location.origin}/menu/${dish.itemId}`;

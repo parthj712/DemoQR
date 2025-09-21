@@ -67,7 +67,7 @@ export default function SearchPage() {
         });
 
         setFilteredResults(results);
-    }, [searchTerm]);
+    }, [searchTerm, menuData]);
 
     const handleExploreClick = (sectionKey) => {
         router.push(`/menu?highlight=${sectionKey}`);
