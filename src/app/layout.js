@@ -1,16 +1,16 @@
-
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
-import theme from "@/Theme/theme";
+import { Box, CssBaseline } from "@mui/material";
 import { LanguageProvider } from "@/Context/LanguageContext";
-import Applayout from "@/Componenets/AppLayout/Applayout";
 import { FavoritesProvider, ThemeContextProvider } from "@/Theme/ThemeContext";
+import ClientOnly from "@/Componenets/ClientOnly/ClientOnly"; // create this component
+import Applayout from "@/Componenets/AppLayout/Applayout";
 import ThemeToggle from "@/Componenets/ThemeToggle/ThemeToggle";
+import theme from "@/Theme/theme";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // choose weights you need
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -26,20 +26,28 @@ export default function RootLayout({ children }) {
           <FavoritesProvider>
             <LanguageProvider>
               <CssBaseline />
-              <Box>
-                {children}
-              </Box>
-              <Applayout />
-              <Box
-                color="secondary"
-                sx={{
-                  position: "fixed",
-                  bottom: 100, // above BottomMenu
-                  right: 20,
-                }}
-              >
-                <ThemeToggle />
-              </Box>
+
+              {/* Main content */}
+              <Box>{children}</Box>
+
+              {/* Client-only components */}
+              <ClientOnly>
+                <Applayout />
+              </ClientOnly>
+
+              <ClientOnly>
+                <Box
+                  color="secondary"
+                  sx={{
+                    position: "fixed",
+                    bottom: 100,
+                    right: 20,
+                  }}
+                >
+                  <ThemeToggle />
+                </Box>
+              </ClientOnly>
+
             </LanguageProvider>
           </FavoritesProvider>
         </ThemeContextProvider>

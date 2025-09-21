@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { Box, CardMedia, keyframes, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import { motion } from "framer-motion";
@@ -29,7 +29,7 @@ export default function SearchPage() {
     const [searchTerm, setSearchTerm] = useState(initialQuery);
     const [filteredResults, setFilteredResults] = useState([]);
 
-    const menuData = DiningConstant();
+    const menuData = useMemo(() => DiningConstant(), []);
 
     const { language } = useLanguage();
 
@@ -67,7 +67,8 @@ export default function SearchPage() {
         });
 
         setFilteredResults(results);
-    }, [searchTerm, menuData]);
+    }, [searchTerm, menuData]); // menuData is now stable, no infinite loop
+
 
     const handleExploreClick = (sectionKey) => {
         router.push(`/menu?highlight=${sectionKey}`);

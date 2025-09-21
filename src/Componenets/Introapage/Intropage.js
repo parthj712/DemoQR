@@ -26,11 +26,11 @@ const Intropage = () => {
 
     const { language } = useLanguage();
 
-    const mainTitle = language === 'mr' ? "स्कॅन & डाईन" : "Scan N Dine";
+    const mainTitle = language === 'en' ? "Scan N Dine" : "स्कॅन & डाईन";
 
-    const secTitle = language === 'mr' ? "तुमचा मेनू, सुंदरपणे पुन्हा डिझाइन केलेला." : "Your menu, beautifully reimagined";
+    const secTitle = language === 'en' ? "Your menu, beautifully reimagined" : "तुमचा मेनू, सुंदरपणे पुन्हा डिझाइन केलेला.";
 
-    const menuTitle = language === 'mr' ? "मेन्यू कार्ड (eMenu)" : "Menu Card (eMenu)";
+    const menuTitle = language === 'en' ? "Menu Card (eMenu)" : "मेन्यू कार्ड (eMenu)";
 
     ``
     return (
@@ -56,9 +56,9 @@ const Intropage = () => {
                     src={demo}
                     alt="Manas Hotel Logo"
                     width={isSmallMobile ? 160 : isMobile ? 220 : 240} // you can adjust
-                    height={isSmallMobile ? 160 : isMobile ? 140 :  160} // you can adjust
+                    height={isSmallMobile ? 160 : isMobile ? 140 : 160} // you can adjust
                     priority // loads immediately
-                    style={{borderRadius : 15}}
+                    style={{ borderRadius: 15 }}
                 />
                 <Box
                     display="flex"
@@ -69,16 +69,16 @@ const Intropage = () => {
                     {/* Main Title with Gradient */}
                     <Typography
                         textAlign="center"
-                        fontSize={isSmallMobile ? "30px" : isMobile ? "35px" :  "50px"}
+                        fontSize={isSmallMobile ? "30px" : isMobile ? "35px" : "50px"}
                         fontWeight={600}
                     >
-                        {mainTitle}
+                        Scan N Dine
                     </Typography>
 
                     {/* Secondary Title */}
                     <Typography
                         textAlign="center"
-                        fontSize={isSmallMobile ? "18px" : isMobile ? "22px" :  "24px"}
+                        fontSize={isSmallMobile ? "18px" : isMobile ? "22px" : "24px"}
                         fontWeight={600}
                         sx={{
                             position: "relative",
@@ -86,7 +86,7 @@ const Intropage = () => {
                             color: isDark ? "#ececec" : "#000", // plain adaptive text
                         }}
                     >
-                        {secTitle}
+                        Your menu, beautifully reimagined
                     </Typography>
                 </Box>
             </div>

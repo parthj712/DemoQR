@@ -1,22 +1,26 @@
-"use client"
-
+'use client';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import React from 'react'
 import BottomNav from '../BottomNavigation/BottomNav';
 
 const Applayout = () => {
-
     const pathname = usePathname();
+    const [mounted, setMounted] = useState(false);
 
-    // hide BottomNav on Intro & Welcome (your home `/` route)
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const hideBottomNav = pathname === "/";
 
+    // Wait for client-side hydration
+    if (!mounted) return null;
 
     return (
-        <div>
-            {!hideBottomNav && <BottomNav />} {/* 👈 render only if not intro/welcome */}
-        </div>
-    )
+        <>
+            {!hideBottomNav && <BottomNav />}
+        </>
+    );
 }
 
-export default Applayout
+export default Applayout;
