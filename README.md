@@ -1,5 +1,7 @@
 # 🚀 Scan N Dine – QR-Based Digital Menu SaaS
 
+🚀 Real-world hospitality SaaS concept with business + tech execution
+
 ⭐ Built as a real-world hospitality solution with product, frontend, and marketing ownership
 
 ---
